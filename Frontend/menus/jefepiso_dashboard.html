@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Noreste Grill – Jefe de Piso</title>
+    <link rel="stylesheet" href="../CSS/hostess.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar__logo">
+                <span class="logo-icon"></span>
+                <span class="logo-text">Noreste Grill</span>
+            </div>
+
+            <nav class="sidebar__nav">
+                
+                <a href="estado_mesas.html?rol=jefepiso" class="nav-item">
+                    <span class="nav-icon">🪑</span>
+                    <span class="nav-label">Estado de Mesas</span>
+                </a>
+
+                <a href="reservaciones.html?rol=jefepiso" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-label">Reservaciones</span>
+                </a>
+
+                <a href="gestion_promociones.html" class="nav-item">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Gestion de promociones</span>
+                </a>
+
+                <a href="personal.html?rol=jefepiso" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-label">Gestion de meseros</span>
+                </a>
+
+                <a href="usuarios.html?origen=jefepiso" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Seguridad (Gestion de Usuarios)</span>
+                </a>
+            </nav>
+
+            <div class="sidebar__footer">
+                <button class="btn-ghost" id="btnLogout">🔐 Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <!-- main -->
+        <div class="main">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+                <div class="topbar__left">
+                    <h1 class="topbar__title">Panel del Jefe de Piso</h1>
+                </div>
+
+                <div class="topbar__right">
+                    <div class="user-chip">
+                        <div class="user-avatar">JP</div>
+                        <div class="user-info">
+                            <span class="user-name">Jefe de Piso</span>
+                            <span class="user-role">Supervisión</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+           
+            <main class="content">
+
+                <!--resumen -->
+                <section class="cards-grid">
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Mesas en servicio</span>
+                            <span class="card-tag">🪑</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">18</span>
+                            <span class="card-caption">Incluye booths</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Retrasos hoy</span>
+                            <span class="card-tag">⏱</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">4</span>
+                            <span class="card-caption">Mesas fuera de tiempo</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Meseros en turno</span>
+                            <span class="card-tag">👥</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">7</span>
+                            <span class="card-caption">Incluye staff de apoyo</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Cumplimiento tiempos</span>
+                            <span class="card-tag">📈</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">89%</span>
+                            <span class="card-caption">Protocolo de atención</span>
+                        </div>
+                    </article>
+
+                </section>
+
+                
+                <section class="content-grid">
+
+                    <section class="panel panel--large">
+                        <header class="panel-header">
+                            <div>
+                                <h2 class="panel-title">Supervisión del día</h2>
+        
+                            </div>
+                        </header>
+
+                        <div class="panel-body panel-body--list">
+                            <div class="list-item">
+                                <span class="list-title">Último retraso registrado</span>
+                                <span class="list-subtitle">Mesa 42 — mesero Luis — hace 6 min</span>
+                            </div>
+
+                            <div class="list-item">
+                                <span class="list-title">Mesa liberada recientemente</span>
+                                <span class="list-subtitle">Mesa 24 — lista para asignar</span>
+                            </div>
+
+                            <div class="list-item">
+                                <span class="list-title">Promoción más aplicada</span>
+                                <span class="list-subtitle">"2x1 en bebidas" — 9 usos hoy</span>
+                            </div>
+
+                            <div class="list-item">
+                                <span class="list-title">Mesero destacado</span>
+                                <span class="list-subtitle">Ana — 96% cumplimiento tiempos</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel">
+                        <header class="panel-header">
+                            <h2 class="panel-title">Accesos rápidos</h2>
+                        </header>
+
+                        <div class="panel-body panel-body--list">
+                            <a href="estado_mesas.html?rol=jefepiso" class="btn-primary">Ver estado de mesas</a>
+                            <a href="personal.html?rol=jefepiso" class="btn-primary">Revisar rendimiento de personal</a>
+                            <a href="promociones_vigentes.html?rol=jefepiso" class="btn-primary">Consultar promociones</a>
+                            <a href="usuarios.html?rol=jefepiso" class="btn-primary">Modificar usuarios</a>
+                            <a href="reservaciones.html?rol=jefepiso" class="btn-primary">Revisar reservaciones</a>
+                        </div>
+                    </section>
+
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- LOGOUT -->
+    <script>
+        const btnLogout = document.getElementById("btnLogout");
+
+        if (btnLogout) {
+            btnLogout.addEventListener("click", () => {
+                localStorage.removeItem("ROL");
+                localStorage.removeItem("USER");
+                window.location.href = "../HTML/login.html";
+            });
+        }
+    </script>
+
+</body>
+
+</html>

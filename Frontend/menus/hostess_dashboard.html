@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Noreste Grill – Hostess</title>
+    <link rel="stylesheet" href="../CSS/hostess.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- opciones-->
+        <aside class="sidebar">
+            <div class="sidebar__logo">
+                <span class="logo-icon"></span>
+                <span class="logo-text">Noreste Grill</span>
+            </div>
+
+            <nav class="sidebar__nav">
+
+                <a href="reservaciones.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-label">Reservaciones</span>
+                </a>
+
+                <a href="lista_espera.html" class="nav-item">
+                    <span class="nav-icon">🕒</span>
+                    <span class="nav-label">Lista de espera</span>
+                </a>
+
+                <a href="estado_mesas.html" class="nav-item">
+                    <span class="nav-icon">🪑</span>
+                    <span class="nav-label">Estado de mesas</span>
+                </a>
+
+                <a href="promociones_vigentes.html" class="nav-item">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Promociones vigentes</span>
+                </a>
+            </nav>
+
+            <div class="sidebar__footer">
+                <button id="btnLogout" class="btn-ghost">🔐 Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <!-- main -->
+        <div class="main">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+                <div class="topbar__left">
+                    <h1 class="topbar__title">Panel del Hostess</h1>
+                    
+                </div>
+                
+                <div class="topbar__right">
+                    <div class="user-chip">
+                        <div class="user-avatar">H</div>
+                        <div class="user-info">
+                            <span class="user-name">Hostess</span>
+                            <span class="user-role">Turno matutino</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+
+           
+            <main class="content">
+
+                <!--cards on top-->
+                <section class="cards-grid">
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Clientes en espera</span>
+                            <span class="card-tag">🕒</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">6</span>
+                            <span class="card-caption">2 grupos grandes</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Mesas ocupadas</span>
+                            <span class="card-tag">🍽</span>
+                        </div>
+                        <div class="card-main card-main--split">
+                            <div>
+                                <span class="card-number">14</span>
+                                <span class="card-caption">En servicio</span>
+                            </div>
+                            <div>
+                                <span class="card-number card-number--muted">6</span>
+                                <span class="card-caption">Disponibles</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Tiempo promedio</span>
+                            <span class="card-tag">⏳</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">42 min</span>
+                            <span class="card-caption">Promedio por mesa</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Promociones vigentes</span>
+                            <span class="card-tag">⭐</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">3</span>
+                            <span class="card-caption">Fin de semana, alimentos</span>
+                        </div>
+                    </article>
+
+                </section>
+
+                <!-- lista de espera -->
+                <section class="content-grid">
+
+                <section class="panel panel--large">
+                    <header class="panel-header">
+                        <div>
+                            <h2 class="panel-title">Reservaciones recientes</h2>
+                            <p class="panel-subtitle">Últimas reservaciones registradas.</p>
+                        </div>
+                        <a href="reservaciones.html" class="btn-primary">Ver reservaciones</a>
+                    </header>
+                
+                    <div class="panel-body panel-body--list">
+                
+                        <div class="list-item">
+                            <span class="list-title">Familia López – 4 personas</span>
+                            <span class="list-subtitle">Hoy • 14:00 • Confirmada</span>
+                        </div>
+                
+                        <div class="list-item">
+                            <span class="list-title">Grupo empresarial – 8 personas</span>
+                            <span class="list-subtitle">Hoy • 19:00 • Pendiente</span>
+                        </div>
+                
+                        <div class="list-item">
+                            <span class="list-title">Pareja Ramírez – 2 personas</span>
+                            <span class="list-subtitle">Mañana • 20:30 • Confirmada</span>
+                        </div>
+                
+                        <div class="list-item">
+                            <span class="list-title">Cumpleaños García – 6 personas</span>
+                            <span class="list-subtitle">Mañana • 21:00 • Confirmada</span>
+                        </div>
+                
+                    </div>
+                </section>
+
+
+                    <section class="panel">
+                        <header class="panel-header">
+                            <h2 class="panel-title">Lista de espera</h2>
+                            <p class="panel-subtitle">Resumen de clientes en espera</p>
+                        </header>
+
+                        <div class="panel-body panel-body--list">
+
+                            <div class="list-item">
+                                <span class="list-title">Familia Torres – 4 personas</span>
+                                <span class="list-subtitle">Esperando 12 min</span>
+                            </div>
+
+                            <div class="list-item">
+                                <span class="list-title">Grupo empresa – 8 personas</span>
+                                <span class="list-subtitle">Esperando 5 min</span>
+                            </div>
+
+                            <div class="list-item">
+                                <span class="list-title">Pareja López</span>
+                                <span class="list-subtitle">Esperando 2 min</span>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </section>
+
+            </main>
+
+        </div>
+    </div>
+
+
+    <!-- JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const rol = localStorage.getItem("ROL") || "HOSTESS";
+
+
+            // Logout
+            document.getElementById("btnLogout").addEventListener("click", () => {
+                localStorage.removeItem("ROL");
+                localStorage.removeItem("USER");
+                window.location.href = "../HTML/login.html";
+            });
+        });
+    </script>
+
+</body>
+
+</html>
