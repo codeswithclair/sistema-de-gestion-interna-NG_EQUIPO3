@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Inicio de sesión – Noreste Grill</title>
+    <link rel="stylesheet" href="../CSS/login.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="login-logo">
+                <img src="../IMAGES/NG LOGO.png" alt="Logo" class="logo-img">
+                <h2>Noreste Grill</h2>
+                <p class="subtitle">Sistema de gestión interna</p>
+            </div>
+
+            <!-- FORMULARIO -->
+            <div class="login-form">
+                <label>Usuario</label>
+                <input type="text" id="user" placeholder="Ingresa tu usuario">
+
+                <label>Contraseña</label>
+                <input type="password" id="pass" placeholder="Ingresa tu contraseña">
+
+                <button class="btn-login" onclick="login()">Iniciar sesión</button>
+
+                <p class="login-note">Acceso exclusivo para personal autorizado</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../JAVASCRIPT/auth.js"></script>
+
+</body>
+
+</html>
