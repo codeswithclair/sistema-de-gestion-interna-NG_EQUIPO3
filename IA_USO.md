@@ -15,7 +15,7 @@ El primer uso de la inteligencia artificial en el desarrollo de este sistema se 
 
 ####  📋*Prompt:*
 <div align="justify">
-"Simula la generación de roles mediante JavaScript y para llevar a cabo pruebas funcionales sibre nuestras interfaces en desarrollo, verifcando que cumplan con todos los requerimientos específicados en la fase de análisis."
+"Simula la generación de roles mediante JavaScript y para llevar a cabo pruebas funcionales sobre nuestras interfaces en desarrollo, verifcando que cumplan con todos los requerimientos específicados en la fase de análisis."
 <div>
 
 ---
