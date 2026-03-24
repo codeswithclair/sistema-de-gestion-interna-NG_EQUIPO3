@@ -11,3 +11,11 @@ En este apartado se presentarán los usos de la IA implementados a lo largo de e
 <div align="justify">
 El primer uso de la inteligencia artificial en el desarrollo de este sistema se implementó en la generación de roles mediante JavaScript, con el propósito de ejecutar pruebas funcionales sobre las interfaces en construcción. Dichas pruebas permitieron validar que las interfaces cumplieran con los requerimientos previamente especificados en el documento de análisis de requisitos.
 </div>
+
+
+####  📋*Prompt:*
+<div align="justify">
+"Simula la generación de roles mediante JavaScript y para llevar a cabo pruebas funcionales sibre nuestras interfaces en desarrollo, verifcando que cumplan con todos los requerimientos específicados en la fase de análisis."
+<div>
+
+---
