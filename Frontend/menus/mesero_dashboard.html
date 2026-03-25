@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Noreste Grill – Mesero</title>
+    <link rel="stylesheet" href="../CSS/hostess.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar__logo">
+                <span class="logo-icon"></span>
+                <span class="logo-text">Noreste Grill</span>
+            </div>
+
+            <nav class="sidebar__nav">
+
+                <a href="estado_mesas.html" class="nav-item">
+                    <span class="nav-icon">🪑</span>
+                    <span class="nav-label">Estado de mesas</span>
+                </a>
+
+                <a href="promociones_vigentes.html?rol=MESERO" class="nav-item">
+                    <span class="nav-icon">⭐</span>
+                    <span class="nav-label">Promociones vigentes</span>
+                </a>
+
+                <a href="mesero_rendimiento.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Mi rendimiento</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar__footer">
+                <button id="btnLogout" class="btn-ghost">🔐 Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <!-- main-->
+        <div class="main">
+
+            <!-- TOP BAR -->
+            <header class="topbar">
+                <div class="topbar__left">
+                    <h1 class="topbar__title">Panel del Mesero</h1>
+                </div>
+
+                <div class="topbar__right">
+                    <div class="user-chip">
+                        <div class="user-avatar">M</div>
+                        <div class="user-info">
+                            <span class="user-name">Mesero</span>
+                            <span class="user-role">Turno asignado</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content">
+
+                <!--resumen -->
+                <section class="cards-grid">
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Mesas atendidas</span>
+                            <span class="card-tag">🍽</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">8</span>
+                            <span class="card-caption">En lo que va del turno</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Promedio de servicio</span>
+                            <span class="card-tag">⏱</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">37 min</span>
+                            <span class="card-caption">Por mesa atendida</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Ranking</span>
+                            <span class="card-tag">🏆</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">#3</span>
+                            <span class="card-caption">Entre todos los meseros</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-header">
+                            <span class="card-title">Retrasos registrados</span>
+                            <span class="card-tag">⚠️</span>
+                        </div>
+                        <div class="card-main">
+                            <span class="card-number">1</span>
+                            <span class="card-caption">Este turno</span>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- mini resumen de estado de mesas -->
+                <section class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title">Estado de mesas</h2>
+                        <p class="panel-subtitle">Control rápido de tus mesas</p>
+                    </header>
+
+                    <div class="panel-body panel-body--list">
+                        <div class="list-item">
+                            <span class="list-title">Mesa 4 — Ocupada</span>
+                            <span class="list-subtitle">Tiempo: 22 min</span>
+                        </div>
+                        <div class="list-item">
+                            <span class="list-title">Mesa 6 — En limpieza</span>
+                            <span class="list-subtitle">Hace 3 min</span>
+                        </div>
+                        <div class="list-item">
+                            <span class="list-title">Mesa 9 — Ocupada</span>
+                            <span class="list-subtitle">Tiempo: 55 min (ALERTA)</span>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // LOGOUT
+            const logout = document.getElementById("btnLogout");
+            logout.addEventListener("click", () => {
+                localStorage.removeItem("ROL");
+                localStorage.removeItem("USER");
+                window.location.href = "login.html";
+            });
+        });
+    </script>
+
+</body>
+
+</html>
