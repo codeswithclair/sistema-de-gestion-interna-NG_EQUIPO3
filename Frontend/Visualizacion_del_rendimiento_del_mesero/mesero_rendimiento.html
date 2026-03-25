@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Rendimiento - Mesero</title>
+
+    <link rel="stylesheet" href="../CSS/hostess.css">
+    <link rel="stylesheet" href="../CSS/mesero.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div id="msgPDF" class="pdf-msg">
+        ✔ Reporte generado correctamente
+    </div>
+
+    <div class="header-return">
+        <div class="header-actions">
+            <button onclick="window.location.href='mesero_dashboard.html'" class="btn-primary">
+                ← Volver
+            </button>
+
+            <button onclick="exportarPDF()" class="btn-primary">
+                📄 Exportar PDF
+            </button>
+        </div>
+
+        <h2>Rendimiento del mesero</h2>
+
+        <div class="header-spacer"></div>
+    </div>
+
+    <p id="meseroName" class="subtitle"></p>
+
+    <div class="kpi-container">
+
+        <div class="kpi-card">
+            <h1 id="kpiCalificacion">--</h1>
+            <p>Calificación</p>
+        </div>
+
+        <div class="kpi-card">
+            <h1 id="kpiRank">#--</h1>
+            <p>Ranking</p>
+        </div>
+
+        <div class="kpi-card">
+            <h1 id="kpiPromosTotal">--</h1>
+            <p>Promos aplicadas</p>
+        </div>
+
+        <div class="kpi-card">
+            <h1 id="kpiHorario">--</h1>
+            <p>Horario asignado</p>
+        </div>
+
+    </div>
+
+    <div class="info-row">
+        <span id="meseroMesas" class="info-chip">Mesas atendidas: --</span>
+        <span id="meseroPromedio" class="info-chip">Promedio por mesa: --</span>
+    </div>
+
+    <div class="panel">
+        <h3 class="panel-title">Desglose de KPIs</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>KPI</th>
+                    <th>Meta</th>
+                    <th>Mesas atendidas</th>
+                    <th>Promos aplicadas</th>
+                    <th>Cumplimiento</th>
+                    <th>Retrasos</th>
+                    <th>Observación</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody id="kpiTable"></tbody>
+        </table>
+    </div>
+
+    <div class="chart-row single-chart">
+        <div class="chart-card">
+            <h3>Cumplimiento por categoría</h3>
+            <canvas id="kpiBarChart"></canvas>
+        </div>
+    </div>
+
+    <div class="modal" id="modalDetalleKPI">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="detalleTitulo">Detalle KPI</h3>
+                <button class="modal-close-btn" onclick="cerrarDetalleKPI()">✕</button>
+            </div>
+
+            <div id="detalleContenido" class="detalle-grid"></div>
+
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="cerrarDetalleKPI()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MESERO = localStorage.getItem("MESERO_NAME") || "Mesero Noreste";
+        document.getElementById("meseroName").innerText = "Bienvenido, " + MESERO;
+
+        const resumenMesero = {
+            calificacion: 86,
+            ranking: 4,
+            promosTotal: 7,
+            horario: "4 PM - 10 PM",
+            mesasAtendidas: 12,
+            promedioMesa: "13 min"
+        };
+
+        /* KPIs POR CATEGORÍA */
+        const categorias = [
+            {
+                nombre: "Charros",
+                meta: "30%",
+                mesas: 12,
+                promos: 3,
+                cumplimiento: 70,
+                retrasos: 1,
+                observacion: "Buen desempeño",
+                detalle: {
+                    meta: "30%",
+                    mesas: 12,
+                    promos: 3,
+                    cumplimiento: "70%",
+                    retrasos: "1 retraso registrado",
+                    observacion: "Buen desempeño en esta categoría. Puede seguir mejorando la constancia."
+                }
+            },
+            {
+                nombre: "Cantaritos",
+                meta: "6% (1 de 15)",
+                mesas: 15,
+                promos: 1,
+                cumplimiento: 55,
+                retrasos: 0,
+                observacion: "Puede mejorar",
+                detalle: {
+                    meta: "6% (1 de 15)",
+                    mesas: 15,
+                    promos: 1,
+                    cumplimiento: "55%",
+                    retrasos: "Sin retrasos",
+                    observacion: "Cumplimiento medio. Se recomienda reforzar esta categoría."
+                }
+            },
+            {
+                nombre: "Postres",
+                meta: "18% (2 de 10)",
+                mesas: 10,
+                promos: 2,
+                cumplimiento: 62,
+                retrasos: 1,
+                observacion: "Puede mejorar",
+                detalle: {
+                    meta: "18% (2 de 10)",
+                    mesas: 10,
+                    promos: 2,
+                    cumplimiento: "62%",
+                    retrasos: "1 retraso registrado",
+                    observacion: "Buen avance, pero todavía no alcanza el nivel esperado."
+                }
+            },
+            {
+                nombre: "VIP",
+                meta: "10% (1 de 10)",
+                mesas: 10,
+                promos: 1,
+                cumplimiento: 80,
+                retrasos: 0,
+                observacion: "Buen desempeño",
+                detalle: {
+                    meta: "10% (1 de 10)",
+                    mesas: 10,
+                    promos: 1,
+                    cumplimiento: "80%",
+                    retrasos: "Sin retrasos",
+                    observacion: "Desempeño sólido en esta categoría."
+                }
+            }
+        ];
+
+        /* CARDS */
+        document.getElementById("kpiCalificacion").innerText = resumenMesero.calificacion;
+        document.getElementById("kpiRank").innerText = "#" + resumenMesero.ranking;
+        document.getElementById("kpiPromosTotal").innerText = resumenMesero.promosTotal;
+        document.getElementById("kpiHorario").innerText = resumenMesero.horario;
+
+        document.getElementById("meseroMesas").innerText = "Mesas atendidas: " + resumenMesero.mesasAtendidas;
+        document.getElementById("meseroPromedio").innerText = "Promedio por mesa: " + resumenMesero.promedioMesa;
+
+        /* TABLA */
+        function renderTabla() {
+            let tbody = "";
+
+            categorias.forEach((c, index) => {
+                tbody += `
+                    <tr>
+                        <td>${c.nombre}</td>
+                        <td>${c.meta}</td>
+                        <td>${c.mesas}</td>
+                        <td>${c.promos}</td>
+                        <td><span class="cumplimiento-badge">${c.cumplimiento}%</span></td>
+                        <td>${c.retrasos}</td>
+                        <td><span class="obs-preview">${c.observacion}</span></td>
+                        <td>
+                            <button class="table-btn" onclick="abrirDetalleKPI(${index})">
+                                Ver detalles
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById("kpiTable").innerHTML = tbody;
+        }
+
+        renderTabla();
+
+        /* GRÁFICA */
+        new Chart(document.getElementById("kpiBarChart"), {
+            type: "bar",
+            data: {
+                labels: categorias.map(c => c.nombre),
+                datasets: [{
+                    data: categorias.map(c => c.cumplimiento),
+                    backgroundColor: ["#ffb3b3", "#b3e6ff", "#ffe29f", "#b5ffcb"]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        /* KPI */
+        function abrirDetalleKPI(index) {
+            const c = categorias[index];
+
+            document.getElementById("detalleTitulo").innerText = "Detalle KPI - " + c.nombre;
+
+            document.getElementById("detalleContenido").innerHTML = `
+                <div class="detalle-block">
+                    <h4>Meta</h4>
+                    <p>${c.detalle.meta}</p>
+                </div>
+
+                <div class="detalle-block">
+                    <h4>Mesas atendidas</h4>
+                    <p>${c.detalle.mesas}</p>
+                </div>
+
+                <div class="detalle-block">
+                    <h4>Promos aplicadas</h4>
+                    <p>${c.detalle.promos}</p>
+                </div>
+
+                <div class="detalle-block">
+                    <h4>Cumplimiento</h4>
+                    <p>${c.detalle.cumplimiento}</p>
+                </div>
+
+                <div class="detalle-block">
+                    <h4>Retrasos</h4>
+                    <p>${c.detalle.retrasos}</p>
+                </div>
+
+                <div class="detalle-block full">
+                    <h4>Observación</h4>
+                    <p>${c.detalle.observacion}</p>
+                </div>
+            `;
+
+            document.getElementById("modalDetalleKPI").classList.add("show");
+        }
+
+        function cerrarDetalleKPI() {
+            document.getElementById("modalDetalleKPI").classList.remove("show");
+        }
+
+        document.getElementById("modalDetalleKPI").addEventListener("click", function (e) {
+            if (e.target.id === "modalDetalleKPI") cerrarDetalleKPI();
+        });
+
+        function exportarPDF() {
+            window.print();
+
+            const msg = document.getElementById("msgPDF");
+            msg.style.display = "block";
+
+            setTimeout(() => {
+                msg.style.display = "none";
+            }, 2500);
+        }
+    </script>
+
+</body>
+
+</html>
