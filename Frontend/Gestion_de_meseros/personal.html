@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rendimiento del Personal – Noreste Grill</title>
+
+    <!-- HOSTESS CSS GENERAL -->
+    <link rel="stylesheet" href="../CSS/hostess.css">
+
+    <!-- PERSONAL CSS DEL MÓDULO -->
+    <link rel="stylesheet" href="../CSS/personal.css">
+</head>
+
+<body class="app">
+
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <div class="topbar__left">
+                <span class="topbar__title">Gestión de meseros</span>
+            </div>
+
+            <div class="topbar__right">
+                <button class="btn-primary" onclick="window.location.href='menu.html'">
+                    ← Regresar al menú 
+                </button>
+            </div>
+        </div>
+
+        <!-- CONTENIDO -->
+        <div class="content">
+
+            <!-- KPI CARDS -->
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Mesas atendidas hoy</span>
+                    </div>
+                    <div class="card-main">
+                        <span class="card-number" id="kpiMesas">0</span>
+                        <span class="card-caption">Total entre todos los meseros</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Tiempo promedio</span>
+                    </div>
+                    <div class="card-main">
+                        <span class="card-number" id="kpiPromedio">--</span>
+                        <span class="card-caption">Promedio global por mesa</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Promociones aplicadas</span>
+                    </div>
+                    <div class="card-main">
+                        <span class="card-number" id="kpiPromos">0</span>
+                        <span class="card-caption">Durante el turno</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Mejor mesero del turno</span>
+                    </div>
+                    <div class="card-main">
+                        <span class="card-number" id="kpiMejor">--</span>
+                        <span class="card-caption">Según ranking</span>
+                    </div>
+                </div>
+            </div>
+
+         <!-- TOOLBAR -->
+<div class="table-toolbar">
+    <div>
+        <h2 class="section-title">Rendimiento por mesero</h2>
+    </div>
+
+    <div class="table-toolbar-actions">
+        <button class="btn-primary" onclick="abrirModalObs()">+ Agregar observación</button>
+        <button class="btn-primary" onclick="abrirModalPromo()">+ Registrar promoción</button>
+    </div>
+</div>
+
+<!-- TABLA PRINCIPAL -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mesero</th>
+            <th>Turno</th>
+            <th>Mesas asignadas</th>
+            <th>Mesas atendidas</th>
+            <th>Promos</th>
+            <th>Promedio</th>
+            <th>Calificación</th>
+            <th>Retrasos</th>
+            <th>Observación</th>
+            <th>Ranking</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody id="tbodyMeseros"></tbody>
+</table>
+
+    <!-- MODAL OBSERVACIÓN -->
+    <div class="modal" id="modalObs">
+        <div class="modal-content">
+            <h3>Nueva observación</h3>
+
+            <label>Mesero</label>
+            <select id="obsMesero" class="form-input"></select>
+
+            <label>Observación</label>
+            <textarea id="obsTexto" class="form-input"></textarea>
+
+            <button class="btn-primary" onclick="guardarObservacion()">Guardar</button>
+            <button class="btn-secondary" onclick="cerrarModals()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- MODAL PROMOCIÓN -->
+    <div class="modal" id="modalPromo">
+        <div class="modal-content">
+            <h3>Registrar promoción aplicada</h3>
+
+            <label>Mesero</label>
+            <select id="promoMesero" class="form-input"></select>
+
+            <label>Promoción aplicada</label>
+            <select id="promoNombre" class="form-input"></select>
+
+            <button class="btn-primary" onclick="guardarPromo()">Guardar</button>
+            <button class="btn-secondary" onclick="cerrarModals()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- MODAL DETALLES -->
+    <div class="modal" id="modalDetalles">
+        <div class="modal-content" id="detallesContent">
+            <!-- JS -->
+        </div>
+    </div>
+
+    <script src="../JAVASCRIPT/rendimiento.js"></script>
+</body>
+
+</html>
