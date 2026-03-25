@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de promociones</title>
+    <link rel="stylesheet" href="../CSS/hostess.css">
+    <link rel="stylesheet" href="../CSS/gestion_promociones.css">
+</head>
+<body>
+
+    <div class="content">
+
+        <div class="promo-admin-header">
+            <h2>Gestión de promociones</h2>
+
+            <div class="promo-admin-actions">
+                <button id="btnNuevaPromo" class="btn-primary">+ Nueva promoción</button>
+                <button id="btnVolverMenu" class="btn-primary">← Regresar al menú </button>
+            </div>
+        </div>
+
+        <div class="promo-summary-grid">
+            <div class="promo-summary-card">
+                <h3 id="totalActivas">08</h3>
+                <p>Activas</p>
+            </div>
+
+            <div class="promo-summary-card">
+                <h3 id="totalInactivas">03</h3>
+                <p>Inactivas</p>
+            </div>
+
+            <div class="promo-summary-card">
+                <h3 id="totalVencer">02</h3>
+                <p>Por vencer</p>
+            </div>
+        </div>
+
+        <section class="card promo-main-panel">
+            <div class="promo-panel-header">
+                <h3>Listado de promociones</h3>
+                <input type="text" class="promo-search" placeholder="Buscar promoción...">
+            </div>
+
+            <table class="table promo-admin-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Días</th>
+                        <th>Ocasión</th>
+                        <th>Vigencia</th>
+                        <th>Estatus</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="promoTableBody">
+                    <tr>
+                        <td><strong>2x1 en bebidas</strong></td>
+                        <td>Aplica en bebidas seleccionadas.</td>
+                        <td>Lunes, Martes, Miércoles</td>
+                        <td>—</td>
+                        <td>01/01/2025 - 31/01/2025</td>
+                        <td><span class="promo-badge active">Activa</span></td>
+                        <td>
+                            <button class="promo-table-btn btnEditar">Editar</button>
+                            <button class="promo-table-btn danger btnToggle">Desactivar</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>20% comidas familiares</strong></td>
+                        <td>Para grupos de 4 a 8 personas.</td>
+                        <td>Viernes, Sábado</td>
+                        <td>Fin de semana</td>
+                        <td>10/01/2025 - 10/02/2025</td>
+                        <td><span class="promo-badge inactive">Inactiva</span></td>
+                        <td>
+                            <button class="promo-table-btn btnEditar">Editar</button>
+                            <button class="promo-table-btn success btnToggle">Activar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <div id="promoModal" class="promo-modal">
+        <div class="promo-modal-content card">
+
+            <div class="promo-modal-header">
+                <h3 id="modalTitle">Nueva promoción</h3>
+                <button id="btnCerrarModal" class="promo-close-btn">✕</button>
+            </div>
+
+            <div class="promo-form-grid">
+
+                <div class="promo-form-group full">
+                    <label>Nombre *</label>
+                    <input type="text" id="promoNombre" class="promo-input">
+                </div>
+
+                <div class="promo-form-group full">
+                    <label>Descripción *</label>
+                    <textarea id="promoDescripcion" class="promo-input"></textarea>
+                </div>
+
+                <div class="promo-form-group full">
+                    <label>Días aplicables *</label>
+                    <div class="days-box">
+                        <label><input type="checkbox" value="Lunes"> Lunes</label>
+                        <label><input type="checkbox" value="Martes"> Martes</label>
+                        <label><input type="checkbox" value="Miércoles"> Miércoles</label>
+                        <label><input type="checkbox" value="Jueves"> Jueves</label>
+                        <label><input type="checkbox" value="Viernes"> Viernes</label>
+                        <label><input type="checkbox" value="Sábado"> Sábado</label>
+                        <label><input type="checkbox" value="Domingo"> Domingo</label>
+                    </div>
+                </div>
+
+                <div class="promo-form-group">
+                    <label>Ocasión</label>
+                    <input type="text" id="promoOcasion" class="promo-input" placeholder="Ej: San Valentín">
+                </div>
+
+                <div class="promo-form-group">
+                    <label>Estatus</label>
+                    <select id="promoEstatus" class="promo-input">
+                        <option>Activa</option>
+                        <option>Inactiva</option>
+                    </select>
+                </div>
+
+                <div class="promo-form-group">
+                    <label>Inicio de vigencia *</label>
+                    <input type="date" id="promoInicio" class="promo-input">
+                </div>
+
+                <div class="promo-form-group">
+                    <label>Fin de vigencia *</label>
+                    <input type="date" id="promoFin" class="promo-input">
+                </div>
+
+                <div class="promo-form-group full">
+                    <label>Condiciones especiales</label>
+                    <textarea id="promoCondiciones" class="promo-input"></textarea>
+                </div>
+
+            </div>
+
+            <div class="promo-form-actions">
+                <button id="btnGuardarPromo" class="btn-primary">Guardar</button>
+                <button id="btnCancelarPromo" class="btn-ghost">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
