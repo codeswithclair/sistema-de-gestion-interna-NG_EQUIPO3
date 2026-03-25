@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Estado de mesas – Noreste Grill</title>
+
+    <link rel="stylesheet" href="../CSS/hostess.css">
+    <link rel="stylesheet" href="../CSS/estado_mesas.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="app">
+
+    <div class="main">
+
+        <div class="topbar">
+            <div class="topbar__left">
+                <span class="topbar__title">Estado de mesas</span>
+                <span class="topbar__subtitle">
+                                                                   .
+                </span>
+            </div>
+
+            <div class="topbar__right">
+                <button id="btnBackMenu" class="btn-primary btn-dark">
+                    ← Regresar al menú 
+                </button>
+                <button id="btnBackWaitlist" class="btn-primary btn-dark">
+                    ← Volver a Lista de espera
+                </button>
+            </div>
+        </div>
+
+        <!-- CONTENIDO -->
+        <div class="content content-grid">
+
+            <!-- PANEL IZQUIERDO: MAPA -->
+            <section class="panel panel--large">
+                <header class="panel-header">
+                    <h2 class="panel-title">Mapa de mesas</h2>
+                    <p class="panel-subtitle">
+                        Selecciona una mesa o booth para ver, asignar cliente, mesero y controlar tiempos.
+                    </p>
+                </header>
+
+                <div class="panel-body">
+
+                    <div class="floor">
+
+                        <!-- COLUMNA IZQUIERDA: BOOTHS 10-15 -->
+                        <div class="floor-column floor-column--booths-vertical">
+                            <div class="booth" data-id="10">10</div>
+                            <div class="booth" data-id="11">11</div>
+                            <div class="booth" data-id="12">12</div>
+                            <div class="booth" data-id="13">13</div>
+                            <div class="booth" data-id="14">14</div>
+                            <div class="booth" data-id="15">15</div>
+                        </div>
+
+                        <!-- BLOQUE 20–34 (a la derecha de booths) -->
+                        <div class="floor-block floor-block--20">
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="20"></div>
+                                <div class="table-wrapper" data-id="30"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="21"></div>
+                                <div class="table-wrapper" data-id="31"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="22"></div>
+                                <div class="table-wrapper" data-id="32"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="23"></div>
+                                <div class="table-wrapper" data-id="33"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="24"></div>
+                                <div class="table-wrapper" data-id="34"></div>
+                            </div>
+                        </div>
+
+                        <!-- BLOQUE 40–54 (a la derecha de 20–34) -->
+                        <div class="floor-block floor-block--40">
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="40"></div>
+                                <div class="table-wrapper" data-id="50"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="41"></div>
+                                <div class="table-wrapper" data-id="51"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="42"></div>
+                                <div class="table-wrapper" data-id="52"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="43"></div>
+                                <div class="table-wrapper" data-id="53"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="44"></div>
+                                <div class="table-wrapper" data-id="54"></div>
+                            </div>
+                        </div>
+
+                        <!-- pared en medio -->
+                        <div class="floor-wall"></div>
+
+                        <!-- BLOQUE DERECHO: 60–64, 70–74, 80–84, 90–93 -->
+                        <div class="floor-block floor-block--right">
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="60"></div>
+                                <div class="table-wrapper" data-id="70"></div>
+                                <div class="table-wrapper" data-id="80"></div>
+                                <div class="table-wrapper" data-id="90"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="61"></div>
+                                <div class="table-wrapper" data-id="71"></div>
+                                <div class="table-wrapper" data-id="81"></div>
+                                <div class="table-wrapper" data-id="91"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="62"></div>
+                                <div class="table-wrapper" data-id="72"></div>
+                                <div class="table-wrapper" data-id="82"></div>
+                                <div class="table-wrapper" data-id="92"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="63"></div>
+                                <div class="table-wrapper" data-id="73"></div>
+                                <div class="table-wrapper" data-id="83"></div>
+                                <div class="table-wrapper" data-id="93"></div>
+                            </div>
+                            <div class="floor-row">
+                                <div class="table-wrapper" data-id="64"></div>
+                                <div class="table-wrapper" data-id="74"></div>
+                                <div class="table-wrapper" data-id="84"></div>
+                                <div class="floor-empty"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- FILA INFERIOR: BOOTHS + ENTRADA -->
+                    <div class="floor-bottom">
+                        <div class="booth" data-id="25">25</div>
+                        <div class="booth" data-id="35">35</div>
+                        <div class="booth" data-id="45">45</div>
+                        <div class="booth" data-id="55">55</div>
+                        <div class="booth" data-id="65">65</div>
+                        <div class="booth" data-id="75">75</div>
+                        <div class="booth" data-id="85">85</div>
+                        <div class="entry">ENTRY</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- PANEL DERECHO: detalles de casa mesa con reqs de user -->
+            <section class="panel">
+                <header class="panel-header">
+                    <h2 class="panel-title">Detalle de mesa / booth</h2>
+                </header>
+
+                <div class="panel-body panel-body--list">
+                    <p id="mesaInfo">Selecciona una mesa o booth en el mapa.</p>
+
+                    <div class="list-item">
+                        <label class="form-label"><strong>Estado</strong></label>
+                        <select id="mesaEstado" class="form-input">
+                            <option value="libre">Libre</option>
+                            <option value="ocupada">Ocupada</option>
+                            <option value="limpieza">En limpieza</option>
+                        </select>
+                    </div>
+
+                    <div class="list-item">
+                        <label class="form-label"><strong>Cliente</strong></label>
+                        <input id="mesaCliente" class="form-input" type="text" placeholder="Nombre del cliente">
+                    </div>
+
+                    <div class="list-item">
+                        <label class="form-label"><strong>Personas</strong></label>
+                        <input id="mesaPersonas" class="form-input" type="number" min="1"
+                            placeholder="Número de personas">
+                    </div>
+
+                    <div class="list-item">
+                        <label class="form-label"><strong>Mesero asignado</strong></label>
+                        <input id="mesaMesero" class="form-input" type="text" placeholder="Nombre del mesero">
+                        <small class="help-text">
+                            Si no hay mesero asignado, la mesa/booth aparecerá como “en espera de ser atendida”.
+                        </small>
+                    </div>
+
+                    <div class="list-item">
+                        <p><strong>Tiempo en servicio / limpieza:</strong></p>
+                        <p id="mesaTimer">--:--</p>
+                    </div>
+
+                    <div class="list-item delay-box" id="delayBox" style="display:none;">
+                        <p><strong>Razón de retraso (más de 10 minutos):</strong></p>
+                        <select id="delayReason" class="form-input">
+                            <option value="">Selecciona una razón...</option>
+                            <option value="Mesero ocupado">Mesero ocupado</option>
+                            <option value="Cocina con alta carga de trabajo">Cocina con alta carga</option>
+                            <option value="Retraso en limpieza">Retraso en limpieza</option>
+                            <option value="Falta de personal">Falta de personal</option>
+                            <option value="Cliente solicitó más tiempo">Cliente pidió tiempo</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-primary btn-dark" id="btnGuardarEstado">
+                        Guardar cambios
+                    </button>
+
+                    <hr>
+
+                    <div class="list-item">
+                        <p><strong>Leyenda:</strong></p>
+                        <p>
+                            <span class="dot dot--libre"></span> Libre &nbsp;&nbsp;
+                            <span class="dot dot--espera"></span> Ocupada (esperando mesero) &nbsp;&nbsp;
+                            <span class="dot dot--ocupada"></span> Ocupada (mesero asignado) &nbsp;&nbsp;
+                            <span class="dot dot--limpieza"></span> En limpieza
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- razon de retraso alerta -->
+    <div id="modalRetraso" class="modal" style="display:none;">
+        <div class="modal-content card" style="max-width:420px; width:90%;">
+
+            <h3>Registrar razón del retraso</h3>
+
+            <p id="modalMesaInfo" class="panel-subtitle">
+                Mesa seleccionada: —
+            </p>
+
+            <label><strong>Razón del retraso *</strong></label>
+            <select id="razonRetrasoSelect" class="form-input">
+                <option value="">Selecciona una razón...</option>
+                <option value="Mesero ocupado">Mesero ocupado</option>
+                <option value="Cocina con alta carga de trabajo">Cocina con alta carga</option>
+                <option value="Retraso en limpieza">Retraso en limpieza</option>
+                <option value="Falta de personal">Falta de personal</option>
+                <option value="Cliente solicitó más tiempo">Cliente pidió tiempo</option>
+                <option value="Otro">Otro</option>
+            </select>
+
+            <label>Comentario opcional</label>
+            <textarea id="razonRetrasoComentario" class="form-input"
+                placeholder="Detalle adicional (opcional)..."></textarea>
+
+            <div class="form-actions">
+                <button id="btnGuardarRazonRetraso" class="btn-primary">Guardar razón</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

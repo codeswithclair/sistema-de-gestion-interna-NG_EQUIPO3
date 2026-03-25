@@ -1,0 +1,294 @@
+/* CONTENEDORES DEL PLANO */
+.floor {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    /* separación general media */
+    margin-bottom: 12px;
+}
+
+/* columna de booths vertical (10–15) */
+.floor-column--booths-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* bloques de mesas */
+.floor-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* bloque 20–34 (pegadito a booths) */
+.floor-block--20 {
+    margin-left: 8px;
+}
+
+/* bloque 40–54 (separación media de 20–34) */
+.floor-block--40 {
+    margin-left: 24px;
+}
+
+/* bloque derecho (después del muro) */
+.floor-block--right {
+    margin-left: 24px;
+}
+
+/* filas de mesas dentro de cada bloque */
+.floor-row {
+    display: flex;
+    gap: 12px;
+}
+
+/* pared central (azul) */
+.floor-wall {
+    width: 10px;
+    height: 100%;
+    background: #1d4ed8;
+    border-radius: 999px;
+}
+
+/* fila inferior de booths + entrada */
+.floor-bottom {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    align-items: center;
+}
+
+/* booths (cuadros negros) */
+.booth {
+    min-width: 40px;
+    min-height: 26px;
+    padding: 4px 6px;
+    background: #111827;
+    color: #ffffff;
+    font-size: 0.7rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #000;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.booth:hover {
+    transform: scale(1.06);
+}
+
+/* entrada */
+.entry {
+    min-width: 60px;
+    min-height: 26px;
+    padding: 4px 6px;
+    background: #4b5563;
+    color: #ffffff;
+    font-size: 0.7rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* celdas vacías de relleno */
+.floor-empty {
+    width: 40px;
+    height: 40px;
+}
+
+/* ----- MESAS (ROMBOS) ----- */
+.table-wrapper {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    transform: rotate(45deg);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+/* estados de color para mesas */
+.table--libre {
+    background: #d1fae5;
+    /* verde claro */
+}
+
+.table--ocupada {
+    background: #fecaca;
+    /* rojo claro (mesero asignado) */
+}
+
+.table--ocupada-espera {
+    background: #fed7aa;
+    /* naranja (esperando mesero) */
+}
+
+.table--limpieza {
+    background: #fef9c3;
+    /* amarillo claro */
+}
+
+/* estados de color para booths  */
+.booth--libre {
+    box-shadow: 0 0 0 2px #16a34a;
+}
+
+.booth--ocupada {
+    box-shadow: 0 0 0 2px #b91c1c;
+}
+
+.booth--ocupada-espera {
+    box-shadow: 0 0 0 2px #ea580c;
+}
+
+.booth--limpieza {
+    box-shadow: 0 0 0 2px #eab308;
+}
+
+/* retraso */
+.table--delay {
+    box-shadow: 0 0 0 2px #b91c1c, 0 10px 20px rgba(15, 23, 42, 0.35);
+}
+
+.booth--delay {
+    box-shadow: 0 0 0 3px #b91c1c;
+}
+
+.table:hover {
+    transform: rotate(45deg) scale(1.06);
+}
+
+/* centro de la mesa */
+.table-center {
+    position: absolute;
+    inset: 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-45deg);
+    /* endereza contenido */
+}
+
+.table-number {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.table-timer {
+    font-size: 0.85rem;
+    margin-top: 4px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* sillas alrededor */
+.chair {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 2px;
+}
+
+.chair--top {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chair--bottom {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chair--left {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.chair--right {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* leyenda */
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    margin-right: 4px;
+}
+
+.dot--libre {
+    background: #16a34a;
+}
+
+.dot--espera {
+    background: #ea580c;
+}
+
+.dot--ocupada {
+    background: #b91c1c;
+}
+
+.dot--limpieza {
+    background: #eab308;
+}
+
+
+.help-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+/* retraso */
+.delay-box {
+    border: 1px dashed #f97316;
+    background: #fff7ed;
+}
+
+.btn-dark {
+    background: #2f4f4f !important;
+    color: #ffffff !important;
+}
+
+.btn-dark:hover {
+    background: #1f3636 !important;
+}
+
+
+@media (max-width: 900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .floor {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .floor-bottom {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
