@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Reservaciones – Noreste Grill</title>
+
+    <link rel="stylesheet" href="../CSS/hostess.css">
+
+    <link rel="stylesheet" href="../CSS/reservaciones.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="module-page">
+    <header class="module-topbar">
+        <div class="module-topbar__left">
+            <h1 class="module-title">Reservaciones</h1>
+            <p class="module-subtitle">Registrar, consultar, actualizar y cancelar</p>
+        </div>
+
+        <div class="module-topbar__right">
+
+         
+        <button class="btn-primary" id="btnBack">← Regresar al menú </button>
+   
+        </div>
+    </header>
+
+    <!--main -->
+    <main class="content">
+
+        <section class="cards-grid">
+
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-title">Reservaciones de hoy</span>
+                    <span class="card-tag">📅</span>
+                </div>
+                <div class="card-main card-main--split">
+                    <div>
+                        <span id="totalToday" class="card-number">0</span>
+                        <span class="card-caption">Registradas</span>
+                    </div>
+                    <div>
+                        <span id="upcomingCount" class="card-number card-number--muted">0</span>
+                        <span class="card-caption">Próximas en 1 hora</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-title">Próxima reservación</span>
+                    <span class="card-tag">⏰</span>
+                </div>
+                <div class="card-main">
+                    <span id="nextReservationLabel" class="card-number">Sin próximas</span>
+                    <span id="nextReservationTime" class="card-caption">—</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-title">Exportar agenda</span>
+                    <span class="card-tag">📄</span>
+                </div>
+                <div class="card-main">
+                    <button class="btn-primary" id="btnExportPdf">Exportar a PDF</button>
+                </div>
+            </article>
+
+        </section>
+
+       
+        <section class="content-grid">
+
+            <!--formulario -->
+            <section class="panel panel--large">
+                <header class="panel-header">
+                    <h2 class="panel-title">Registrar / Actualizar reservación</h2>
+                    <p class="panel-subtitle">Todos los campos con * son obligatorios.</p>
+                </header>
+
+                <div class="panel-body">
+
+                    <form id="reservationForm" class="reservation-form">
+                        <input type="hidden" id="editingIndex">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label class="form-label">Nombre *</label>
+                                <input id="nombre" class="form-input" type="text" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Teléfono *</label>
+                                <input id="telefono" class="form-input" type="tel" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Fecha *</label>
+                                <input id="fecha" class="form-input" type="date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Hora *</label>
+                                <input id="hora" class="form-input" type="time" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Personas *</label>
+                                <input id="personas" class="form-input" type="number" min="1" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Estado *</label>
+                                <select id="estado" class="form-input">
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="Confirmada">Confirmada</option>
+                                    <option value="Cancelada">Cancelada</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group form-group--full">
+                                <label class="form-label">Comentarios</label>
+                                <textarea id="nota" class="form-input" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-primary" id="btnGuardar" type="submit">Guardar reservación</button>
+                            <button type="button" id="btnLimpiar" class="table-btn">Limpiar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+
+            <!-- tabla -->
+            <section class="panel">
+                <header class="panel-header">
+                    <h2 class="panel-title">Reservaciones por horario</h2>
+                    <input id="searchByName" type="search" class="search-input" placeholder="Buscar por nombre...">
+                </header>
+
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Nombre</th>
+                                <th>Personas</th>
+                                <th>Mesa</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservationsBody">
+        
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+</body>
+
+</html>
