@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Lista de Espera – Noreste Grill</title>
+    <link rel="stylesheet" href="../CSS/hostess.css">
+
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .form-input {
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-soft);
+            background: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+        }
+
+        .form-actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+      
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        thead {
+            background: #f3f4ff;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        th {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* botones */
+        .table-btn {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            background: #eef2ff;
+            color: #3740b8;
+            font-weight: 600;
+        }
+
+        .table-btn--danger {
+            background: #ffe3e3;
+            color: #b91c1c;
+        }
+
+        /* Tiempo */
+        .timer-badge {
+            background: #eef2ff;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #3740b8;
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+
+
+<body class="app">
+
+
+    <div class="main">
+
+        <!-- ===================== TOPBAR ===================== -->
+        <div class="topbar">
+            <div class="topbar__left">
+                <span class="topbar__title">Lista de espera</span>
+                <span class="topbar__subtitle">Control de clientes</span>
+            </div>
+
+            <div class="topbar__right">
+                <button class="btn-primary" onclick="window.location.href='hostess_dashboard.html'">
+                    ← Regresar al menú 
+                </button>
+            </div>
+        </div>
+
+      
+        <div class="content">
+
+            <!-- ========== formulario ========== -->
+            <section class="panel">
+                <header class="panel-header">
+                    <h2 class="panel-title">Registrar cliente en espera</h2>
+                </header>
+
+                <div class="panel-body">
+                    <form id="waitForm" class="wait-form">
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Nombre *</label>
+                                <input id="w_nombre" class="form-input" type="text" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Personas *</label>
+                                <input id="w_personas" class="form-input" type="number" min="1" required>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="form-label">Tipo de festejo (opcional)</label>
+                                <input id="w_festejo" class="form-input" type="text" placeholder="Ej. Cumpleaños, aniversario">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-primary" type="submit">Añadir a la lista</button>
+
+                            <button type="button" class="table-btn" id="clearWaitForm">
+                                Limpiar
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+
+            <!-- ========== tabla ========== -->
+            <section class="panel">
+                <header class="panel-header">
+                    <h2 class="panel-title">Clientes en espera</h2>
+                </header>
+
+                <div class="panel-body">
+                    <table>
+                        <thead>
+                            <tr>
+                              <th>Nombre</th>
+    <th>Personas</th>
+    <th>Festejo</th>
+    <th>Tiempo esperando</th>
+    <th>Acciones</th>
+</tr>
+                        </thead>
+
+                        <tbody id="waitBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
