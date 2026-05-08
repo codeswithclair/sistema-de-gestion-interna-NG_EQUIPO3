@@ -1,0 +1,107 @@
+CREATE DATABASE IF NOT EXISTS noreste_grill;
+USE noreste_grill;
+
+
+CREATE TABLE rol (
+    id_rol VARCHAR(10) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_rol PRIMARY KEY (id_rol)
+);
+CREATE TABLE usuarios (
+    no_empleado INT NOT NULL,
+    id_rol VARCHAR(10) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    nombre_usuario VARCHAR(50) NOT NULL,
+    estado VARCHAR(20) NOT NULL,
+    ultimo_acceso DATETIME NULL,
+    CONSTRAINT pk_usuarios PRIMARY KEY (no_empleado),
+    UNIQUE (correo),
+    UNIQUE (nombre_usuario),
+    CONSTRAINT fk_usuarios_rol
+        FOREIGN KEY (id_rol) REFERENCES rol(id_rol)
+);
+CREATE TABLE mesa (
+    id_mesa INT NOT NULL,
+    no_empleado INT NULL,
+    estado VARCHAR(30) NOT NULL DEFAULT 'libre',
+    nombre_cliente VARCHAR(80) NULL,
+    no_personas INT NULL,
+    hora_inicio DATETIME NULL,
+    razon_retraso VARCHAR(100) NULL,
+    comentario_retraso VARCHAR(255) NULL,
+    CONSTRAINT pk_mesa PRIMARY KEY (id_mesa),
+    CONSTRAINT fk_mesa_usuarios
+        FOREIGN KEY (no_empleado) REFERENCES usuarios(no_empleado)
+);
+CREATE TABLE reservacion (
+    id_reservacion INT NOT NULL AUTO_INCREMENT,
+    no_empleado INT NOT NULL,
+    nombre_cliente VARCHAR(50) NOT NULL,
+    apellido_cliente VARCHAR(50) NULL,
+    telefono VARCHAR(20) NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    no_personas INT NOT NULL,
+    estado VARCHAR(20) NOT NULL,
+    comentarios VARCHAR(255) NULL,
+    CONSTRAINT pk_reservacion PRIMARY KEY (id_reservacion),
+    CONSTRAINT fk_reservacion_usuarios
+        FOREIGN KEY (no_empleado) REFERENCES usuarios(no_empleado)
+);
+CREATE TABLE lista_espera (
+    id_lista INT NOT NULL AUTO_INCREMENT,
+    no_empleado INT NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    no_personas INT NOT NULL,
+    tipo_festejo VARCHAR(50) NULL,
+    hora_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(20) NOT NULL DEFAULT 'EN_ESPERA',
+    CONSTRAINT pk_lista PRIMARY KEY (id_lista),
+    CONSTRAINT fk_lista_espera_usuarios
+        FOREIGN KEY (no_empleado) REFERENCES usuarios(no_empleado)
+);
+CREATE TABLE promocion (
+    id_promocion INT NOT NULL AUTO_INCREMENT,
+    no_empleado INT NOT NULL,
+    nombre VARCHAR(80) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    vigencia_inicio DATE NOT NULL,
+    vigencia_fin DATE NOT NULL,
+    estado TINYINT(1) NOT NULL DEFAULT 1,
+    ocasion VARCHAR(30) NULL,
+    dias_vigentes VARCHAR(100) NOT NULL,
+    condiciones VARCHAR(255) NULL,
+    CONSTRAINT pk_promocion PRIMARY KEY (id_promocion),
+    CONSTRAINT fk_promocion_usuarios
+        FOREIGN KEY (no_empleado) REFERENCES usuarios(no_empleado)
+);
+CREATE TABLE gestion_de_meseros (
+    id_gestion INT NOT NULL AUTO_INCREMENT,
+    no_empleado INT NOT NULL,
+    id_mesa INT NULL,
+    promedio DOUBLE DEFAULT 0,
+    ranking INT DEFAULT 0,
+    turno VARCHAR(30) NULL,
+    observacion VARCHAR(255) NULL,
+    calificacion DOUBLE DEFAULT 0,
+    fecha_registro DATE NOT NULL DEFAULT (CURRENT_DATE),
+    CONSTRAINT pk_meseros PRIMARY KEY (id_gestion),
+    CONSTRAINT fk_gestion_usuarios
+        FOREIGN KEY (no_empleado) REFERENCES usuarios(no_empleado),
+    CONSTRAINT fk_gestion_mesa
+        FOREIGN KEY (id_mesa) REFERENCES mesa(id_mesa)
+);
+CREATE TABLE promocion_has_gestion_de_meseros (
+    id_promocion INT NOT NULL,
+    id_gestion INT NOT NULL,
+    cantidad INT NOT NULL DEFAULT 1,
+    fecha_aplicacion DATE NOT NULL DEFAULT (CURRENT_DATE),
+    CONSTRAINT pk_promo_meseros PRIMARY KEY (id_promocion, id_gestion),
+    CONSTRAINT fk_pg_promocion
+        FOREIGN KEY (id_promocion) REFERENCES promocion(id_promocion),
+    CONSTRAINT fk_pg_gestion
+        FOREIGN KEY (id_gestion) REFERENCES gestion_de_meseros(id_gestion)
+);
